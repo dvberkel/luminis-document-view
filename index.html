@@ -7,6 +7,7 @@
     <script type="text/javascript" src="lib/Markdown.Converter.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/markdown.js"></script>
+    <script type="text/javascript" src="js/loading.js"></script>
    </head>
   <body>
     <div class="navbar navbar-fixed-top">
@@ -138,12 +139,12 @@
       </div>
       <div class="row">
 	<div class="span3">
-	  <ul>
-	    <li>document 1</li>
-	    <li>document 2</li>
+	  <ul id="loading-selection">
+	    <li href="documents/document1.md">document 1</li>
+	    <li href="documents/document2.md">document 2</li>
 	  </ul>
 	</div>
-	<div class="span9 markdown">Select a **document** from the tree.</div>
+	<div class="span9 markdown" id="loading-port">Select a **document** from the tree.</div>
       </div>
     </div>
   </body>
