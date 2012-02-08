@@ -1,6 +1,10 @@
 (function($,undefined){
     var converter = new Markdown.Converter();
 
+    var DocumentModel = Backbone.Model.extend({
+	defaults: { markdown: "Select a **document** from the tree." },
+    });
+
     var DocumentView = Backbone.View.extend({
 	initialize: function(){
 	    _.bindAll(this, 'render');
@@ -9,11 +13,12 @@
 	},
 	
 	render: function(){
-	    $(this.el).html(converter.makeHtml("Select a **document** from the tree."));
+	    $(this.el).html(converter.makeHtml(this.model.get("markdown")));
 	}
     });
     
     $(function(){
-	new DocumentView({el: $("#mvc-port")});
+	var documentModel = new DocumentModel();
+	new DocumentView({el: $("#mvc-port"), model: documentModel});
     });
 })(jQuery);
