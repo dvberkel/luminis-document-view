@@ -29,9 +29,8 @@
 	
 	// render the view on screen.
 	render: function(){
-	    var aModel = new DocumentLeaf({documentUrl: 'documents/document1.md', name: 'document 1'});
 	    var models = new DocumentLeafs();
-	    models.add(aModel);
+	    models.add({documentUrl: 'documents/document1.md', name: 'document 1'});
 
 	    var element = $(this.el);
 	    var template = this.template;
