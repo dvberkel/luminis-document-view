@@ -5,13 +5,14 @@
 // We are using a self evaluating function for two reasons. To limit the scope of
 // defined variable and be certain of the variables `$` and `undefined`.
 (function($,undefined){
-    // A `DocumentLeaf` is a model for the various documents receiding on the server.
+    // A `DocumentLeaf` is a model for a document on the server.
     var DocumentLeaf = Backbone.Model.extend({
 	defaults: { documentUrl: "documents/missing.md", name: "enter a name"}
     });
     
-    // A collection of `DocumentLeaf`s
+    // A collection ...
     var DocumentLeafs = Backbone.Collection.extend({
+	// ... of `DocumentLeaf`s
 	model: DocumentLeaf    
     });   
 
@@ -29,13 +30,9 @@
 	
 	// render the view on screen.
 	render: function(){
-	    var models = new DocumentLeafs();
-	    models.add({documentUrl: 'documents/document1.md', name: 'document 1'});
-	    models.add({documentUrl: 'documents/document2.md', name: 'document 2'});
-
 	    var element = $(this.el), template = this.template;
 	    element.empty();
-	    models.each(function(model){
+	    this.model.each(function(model){
 		element.append(template(model.toJSON()));
 	    });
 	}
@@ -47,7 +44,11 @@
 	var documentModel = new DocumentModel();
 	new DocumentView({el: $("#dynamic-port"), model: documentModel});
 	
-	// Create a document tree view.
-	documentTreeView = new DocumentTreeView({el: $("#dynamic-selection")});
+	// Create document leafs and a corresponding document tree view.
+	documentLeafs = new DocumentLeafs();
+	documentLeafs.add({documentUrl: 'documents/document1.md', name: 'document 1'});
+	documentLeafs.add({documentUrl: 'documents/document2.md', name: 'document 2'});
+
+	documentTreeView = new DocumentTreeView({el: $("#dynamic-selection"), model: documentLeafs});
     });
 })(jQuery)
