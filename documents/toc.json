@@ -1,6 +1,1 @@
-{
-  "documents": [
-    {"documentUrl": "documents/document1.md", "name": "document 1"},
-    {"documentUrl": "documents/document2.md", "name": "document 2"}
-  ]
-}
+{"documents":[{"documentUrl": "document1.md", "name": "document1.md"},{"documentUrl": "document2.md", "name": "document2.md"},{"documentUrl": "toc.json", "name": "toc.json"}]}
