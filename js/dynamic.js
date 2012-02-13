@@ -31,11 +31,12 @@
 	render: function(){
 	    var models = new DocumentLeafs();
 	    models.add({documentUrl: 'documents/document1.md', name: 'document 1'});
+	    models.add({documentUrl: 'documents/document2.md', name: 'document 2'});
 
-	    var element = $(this.el);
-	    var template = this.template;
+	    var element = $(this.el), template = this.template;
+	    element.empty();
 	    models.each(function(model){
-		element.html(template(model.toJSON()));
+		element.append(template(model.toJSON()));
 	    });
 	}
     });
