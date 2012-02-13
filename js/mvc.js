@@ -12,8 +12,8 @@
     // library is used
     var converter = new Markdown.Converter();
 
-    // We create a document model. 
-    var DocumentModel = Backbone.Model.extend({
+    // We create a document model and make it publicly available.
+    window.DocumentModel = Backbone.Model.extend({
 	// The `markdown` property is set to a default invitation to select a document.
 	defaults: { markdown: "Select a **document** from the tree." },
 	
@@ -32,8 +32,8 @@
 	}
     });
     
-    // We create a document view which will render the document model.
-    var DocumentView = Backbone.View.extend({
+    // We create a document view which will render the document model and make it publicly available
+    window.DocumentView = Backbone.View.extend({
 	initialize: function(){
 	    // ensure that the context for the render method is this
 	    // document view.
