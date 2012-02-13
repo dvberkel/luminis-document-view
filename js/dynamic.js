@@ -29,8 +29,15 @@
 	
 	// render the view on screen.
 	render: function(){
-	    var model = new DocumentLeaf({documentUrl: 'documents/document1.md', name: 'document 1'});
-	    $(this.el).html(this.template(model.toJSON()));
+	    var aModel = new DocumentLeaf({documentUrl: 'documents/document1.md', name: 'document 1'});
+	    var models = new DocumentLeafs();
+	    models.add(aModel);
+
+	    var element = $(this.el);
+	    var template = this.template;
+	    models.each(function(model){
+		element.html(template(model.toJSON()));
+	    });
 	}
     });
 
