@@ -5,6 +5,16 @@
 // We are using a self evaluating function for two reasons. To limit the scope of
 // defined variable and be certain of the variables `$` and `undefined`.
 (function($,undefined){
+    // A `DocumentLeaf` is a model for the various documents receiding on the server.
+    var DocumentLeaf = Backbone.Model.extend({
+	defaults: { documentUrl: "documents/missing.md", name: "enter a name"}
+    });
+    
+    // A collection of `DocumentLeaf`s
+    var DocumentLeafs = Backbone.Collection.extend({
+	model: DocumentLeaf    
+    });   
+
     var DocumentTreeView = Backbone.View.extend({
 	// Define a template for one model element.
 	template: _.template("<li href='<%= documentUrl %>'><%= name %></li>"),
