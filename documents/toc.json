@@ -1,0 +1,6 @@
+{
+  "documents": [
+    {"documentUrl": "documents/document1.md", "name": "document 1"},
+    {"documentUrl": "documents/document2.md", "name": "document 2"}
+  ]
+}

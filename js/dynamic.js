@@ -13,7 +13,32 @@
     // A collection ...
     var DocumentLeafs = Backbone.Collection.extend({
 	// ... of `DocumentLeaf`s
-	model: DocumentLeaf    
+	model: DocumentLeaf,
+	
+	// The url which holds the document leaf data
+	url : "documents/toc.json",
+	
+	// The sync method is called when a client calls fetch.
+	sync : function(method, model) {
+	    // We only use it to retrieve data from the server at the moment.
+	    if (method == 'read') {
+		// Make an asynchronous ajax call to fetch the json document at `url`.
+		$.ajax({
+		    url: model.url,
+		    dataType: "json",
+		    // We are expecting a json object with a `documents` property.
+		    // The documents property should hold a literal object which can be used
+		    // to instantiate a `DocumentLeaf` model.
+		    success: function(data){
+			// Add each document to the model.
+			_.each(data.documents, function(document){
+			    model.add(document);
+			});
+		    },
+		    async: false
+		});
+	    }
+	}
     });   
 
     var DocumentTreeView = Backbone.View.extend({
@@ -46,8 +71,7 @@
 	
 	// Create document leafs and a corresponding document tree view.
 	documentLeafs = new DocumentLeafs();
-	documentLeafs.add({documentUrl: 'documents/document1.md', name: 'document 1'});
-	documentLeafs.add({documentUrl: 'documents/document2.md', name: 'document 2'});
+	documentLeafs.fetch();
 
 	documentTreeView = new DocumentTreeView({el: $("#dynamic-selection"), model: documentLeafs});
     });
