@@ -29,7 +29,8 @@
 	
 	// render the view on screen.
 	render: function(){
-	    $(this.el).html(this.template({documentUrl: 'documents/document1.md', name: 'document 1'}));
+	    var model = new DocumentLeaf({documentUrl: 'documents/document1.md', name: 'document 1'});
+	    $(this.el).html(this.template(model.toJSON()));
 	}
     });
 
