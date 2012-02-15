@@ -2,7 +2,7 @@ Luminis Document View
 =====================
 
 This project explores a inovative way of viewing hierarchical
-documents. It is a continuation of earlies research. In particular the
+documents. It is a continuation of earlier research. In particular the
 following projects.
 
 * [Luminis Satellites](https://github.com/dvberkel/luminis-satellites "Luminis Satellites on GitHub")
