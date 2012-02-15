@@ -69,10 +69,12 @@
 	var documentModel = new DocumentModel();
 	new DocumentView({el: $("#dynamic-port"), model: documentModel});
 	
-	// Create document leafs and a corresponding document tree view.
+	// Create a `DocumentLeaf`...
 	documentLeafs = new DocumentLeafs();
+	// ... and fetch data from the server.
 	documentLeafs.fetch();
 
+	// Create a corresponding `DocumentTreeView`.
 	documentTreeView = new DocumentTreeView({el: $("#dynamic-selection"), model: documentLeafs});
 
 	// The tree is a *implicit* controller. Foreach document in the
