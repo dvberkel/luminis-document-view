@@ -1,7 +1,15 @@
 var fs = require("fs");
+var exec = require("child_process").exec;
+
+desc("Create documentation from the javascript sources");
+task("docco", [], function(){
+    console.log("Creating documentation");
+    exec("docco js/*", function(){complete();});
+}, true);
 
 desc("Create table of contents for documents directory");
 task("toc", [], function(){
+    console.log("Creating table of contents");
     var tocEncodingFor = function(file) {
 	return JSON.stringify({documentUrl: "documents/" + file, name: file});
     }
@@ -23,6 +31,6 @@ task("toc", [], function(){
 });
 
 desc("default task");
-task("default", ["toc"], function(){
+task("default", ["docco", "toc"], function(){
     console.log("default task ran");
 });
