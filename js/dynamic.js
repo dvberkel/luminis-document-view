@@ -74,5 +74,16 @@
 	documentLeafs.fetch();
 
 	documentTreeView = new DocumentTreeView({el: $("#dynamic-selection"), model: documentLeafs});
+
+	// The tree is a *implicit* controller. Foreach document in the
+	// tree...
+	$("#dynamic-selection li").each(function(){
+	    var element = $(this);
+	    // ... bind the click event to `loadDocument` method of
+	    // `documentModel`.
+	    element.click(function(){
+		documentModel.loadDocument(element.attr('href'));
+	    });
+	});
     });
 })(jQuery)
