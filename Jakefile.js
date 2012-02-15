@@ -1,5 +1,4 @@
 var fs = require("fs");
-var Beard = require("beard");
 
 desc("Create table of contents for documents directory");
 task("toc", [], function(){
