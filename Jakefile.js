@@ -3,7 +3,7 @@ var fs = require("fs");
 desc("Create table of contents for documents directory");
 task("toc", [], function(){
     var tocEncodingFor = function(file) {
-	return JSON.stringify({documentUrl: file, name: file});
+	return JSON.stringify({documentUrl: "documents/" + file, name: file});
     }
 
     var files = fs.readdirSync("documents");
