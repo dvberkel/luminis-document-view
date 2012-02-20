@@ -1,12 +1,14 @@
 // This example is taken from [GitHub](https://github.com/mrdoob/three.js "GitHub page for Three.js")
 (function($,undefined){
+    var width = 400, height = 300;
+
     var camera, scene, renderer,
     geometry, material, mesh;
-
-   function init() {
+    
+    function init() {
         scene = new THREE.Scene();
 	
-        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera = new THREE.PerspectiveCamera( 75, width / height, 1, 10000 );
         camera.position.z = 1000;
         scene.add( camera );
 	
@@ -15,11 +17,11 @@
 	
         mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
-
-        renderer = new THREE.CanvasRenderer();
-        renderer.setSize( window.innerWidth, window.innerHeight );
 	
-        document.body.appendChild( renderer.domElement );
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize( width, height );
+	
+	$("#scene-port").append(renderer.domElement);
     }
 
     function animate() {
